@@ -362,7 +362,14 @@ void SoftAMR::onQueueFilled(OMX_U32 portIndex) {
                 return;
             }
 #else
-            CHECK_GE(inHeader->nFilledLen, frameSize);
+            if (inHeader->nFilledLen < frameSize) {
+                ALOGE("Filled length vs frameSize %d vs %d. Corrupt clip?",
+                   inHeader->nFilledLen, frameSize);
+
+                notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
+                mSignalledError = true;
+                return;
+            }
 #endif
 
             int16_t *outPtr = (int16_t *)outHeader->pBuffer;
