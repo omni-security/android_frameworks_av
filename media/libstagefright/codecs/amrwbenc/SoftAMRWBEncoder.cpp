@@ -159,6 +159,10 @@ OMX_ERRORTYPE SoftAMRWBEncoder::internalGetParameter(
             OMX_AUDIO_PARAM_PORTFORMATTYPE *formatParams =
                 (OMX_AUDIO_PARAM_PORTFORMATTYPE *)params;
 
+            if (!isValidOMXParam(formatParams)) {
+                return OMX_ErrorBadParameter;
+            }
+
             if (formatParams->nPortIndex > 1) {
                 return OMX_ErrorUndefined;
             }
@@ -178,6 +182,10 @@ OMX_ERRORTYPE SoftAMRWBEncoder::internalGetParameter(
         {
             OMX_AUDIO_PARAM_AMRTYPE *amrParams =
                 (OMX_AUDIO_PARAM_AMRTYPE *)params;
+
+            if (!isValidOMXParam(amrParams)) {
+                return OMX_ErrorBadParameter;
+            }
 
             if (amrParams->nPortIndex != 1) {
                 return OMX_ErrorUndefined;
@@ -199,6 +207,10 @@ OMX_ERRORTYPE SoftAMRWBEncoder::internalGetParameter(
         {
             OMX_AUDIO_PARAM_PCMMODETYPE *pcmParams =
                 (OMX_AUDIO_PARAM_PCMMODETYPE *)params;
+
+            if (!isValidOMXParam(pcmParams)) {
+                return OMX_ErrorBadParameter;
+            }
 
             if (pcmParams->nPortIndex != 0) {
                 return OMX_ErrorUndefined;
@@ -230,6 +242,10 @@ OMX_ERRORTYPE SoftAMRWBEncoder::internalSetParameter(
             const OMX_PARAM_COMPONENTROLETYPE *roleParams =
                 (const OMX_PARAM_COMPONENTROLETYPE *)params;
 
+            if (!isValidOMXParam(roleParams)) {
+                return OMX_ErrorBadParameter;
+            }
+
             if (strncmp((const char *)roleParams->cRole,
                         "audio_encoder.amrwb",
                         OMX_MAX_STRINGNAME_SIZE - 1)) {
@@ -243,6 +259,10 @@ OMX_ERRORTYPE SoftAMRWBEncoder::internalSetParameter(
         {
             const OMX_AUDIO_PARAM_PORTFORMATTYPE *formatParams =
                 (const OMX_AUDIO_PARAM_PORTFORMATTYPE *)params;
+
+            if (!isValidOMXParam(formatParams)) {
+                return OMX_ErrorBadParameter;
+            }
 
             if (formatParams->nPortIndex > 1) {
                 return OMX_ErrorUndefined;
@@ -266,6 +286,10 @@ OMX_ERRORTYPE SoftAMRWBEncoder::internalSetParameter(
         {
             OMX_AUDIO_PARAM_AMRTYPE *amrParams =
                 (OMX_AUDIO_PARAM_AMRTYPE *)params;
+
+            if (!isValidOMXParam(amrParams)) {
+                return OMX_ErrorBadParameter;
+            }
 
             if (amrParams->nPortIndex != 1) {
                 return OMX_ErrorUndefined;
@@ -302,6 +326,10 @@ OMX_ERRORTYPE SoftAMRWBEncoder::internalSetParameter(
         {
             OMX_AUDIO_PARAM_PCMMODETYPE *pcmParams =
                 (OMX_AUDIO_PARAM_PCMMODETYPE *)params;
+
+            if (!isValidOMXParam(pcmParams)) {
+                return OMX_ErrorBadParameter;
+            }
 
             if (pcmParams->nPortIndex != 0) {
                 return OMX_ErrorUndefined;
