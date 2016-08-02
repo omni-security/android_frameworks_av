@@ -77,7 +77,7 @@ public:
 
     virtual status_t useBuffer(
             node_id node, OMX_U32 port_index, const sp<IMemory> &params,
-            buffer_id *buffer);
+            buffer_id *buffer, OMX_BOOL crossProcess);
 
 #ifdef SEMC_ICS_CAMERA_BLOB
     virtual status_t useBufferPmem(
@@ -105,7 +105,7 @@ public:
 
     virtual status_t allocateBufferWithBackup(
             node_id node, OMX_U32 port_index, const sp<IMemory> &params,
-            buffer_id *buffer);
+            buffer_id *buffer, OMX_BOOL crossProcess);
 
     virtual status_t freeBuffer(
             node_id node, OMX_U32 port_index, buffer_id buffer);
